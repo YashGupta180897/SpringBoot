@@ -45,7 +45,7 @@ public class StudentController {
     public String updateStudent(@RequestBody Student student)
     {
         studentService.updateStudent(student);
-        return "Student details updated";
+        return "Processed";
     }
 
     @GetMapping("/keyword")
@@ -58,6 +58,6 @@ public class StudentController {
     public String deleteById(@PathVariable int id)
     {
         studentService.deleteById(id);
-        return "Record deleted";
+        return "Processed";
     }
 }
