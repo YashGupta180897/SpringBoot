@@ -21,40 +21,40 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @RequestMapping(value = "/all")
+    @GetMapping
     public List<Student> getAllStudents()
     {
         return studentService.getAllStudents();
     }
 
-    @PostMapping(value="/add")
+    @PostMapping
     public List<Student> addStudent(@Valid @RequestBody Student student)
     {
         studentService.addStudent(student);
         return studentService.getAllStudents();
     }
 
-    @GetMapping(value="/{id}")
+    @GetMapping("/{id}")
     public Optional<Student> getStudent(@PathVariable int id)
     {
         return studentService.getStudent(id);
     }
 
 
-    @PutMapping(value="/update")
+    @PutMapping
     public String updateStudent(@RequestBody Student student)
     {
         studentService.updateStudent(student);
         return "Student details updated";
     }
 
-    @GetMapping(value="/keyword/{name}")
-    public List<Student> getAllByKeyword(@PathVariable String name)
+    @GetMapping("/keyword")
+    public List<Student> getAllByKeyword(@RequestParam() String name)
     {
         return studentService.getAllByKeyword(name);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping("/{id}")
     public String deleteById(@PathVariable int id)
     {
         studentService.deleteById(id);
