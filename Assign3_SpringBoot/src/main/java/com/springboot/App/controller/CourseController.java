@@ -19,13 +19,13 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @RequestMapping(value = "/all")
+    @GetMapping
     public List<Course> getAllCourse()
     {
         return courseService.getAllCourse();
     }
 
-    @PostMapping(value="/add")
+    @PostMapping
     public List<Course> addCourse(@RequestBody Course course)
     {
         courseService.addCourse(course);
@@ -42,10 +42,10 @@ public class CourseController {
     public String updateCourse(@RequestBody Course course)
     {
         courseService.updateCourse(course);
-        return "Cource updated successfully";
+        return "Processed";
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable int id)
     {
        courseService.deleteById(id);
